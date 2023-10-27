@@ -10,7 +10,9 @@
 				<dancer-list :dancer-list-data="girls" @select="onSelectGirl" />
 			</div>
 		</div>
-		<button class="addBtn" @click="onAddPair" :disabled="!isBtnEnabled">
+		<button class="addBtn"
+		@click="onAddPair"
+		:disabled="!isBtnEnabled">
 			Додати
 		</button>
 		<selected-pairs v-if="selectedPairs.length != 0" :selectedPairsList="selectedPairs" @deletePair="onDeletePair" />
@@ -38,6 +40,11 @@ export default {
 			selectedPairs: [],
 		}
 	},
+	computed: {
+		isBtnEnabled() {
+			return (this.selectedBoy && this.selectedGirl)
+		}
+	},
 
 	methods: {
 		onSelectBoy(dancerId) {
@@ -55,9 +62,6 @@ export default {
 		},
 		filterGirlsList() {
 			return this.girls.filter((girl) => girl.id !== this.selectedGirl.id);
-		},
-		isBtnEnabled() {
-			return (this.selectedBoy && this.selectedGirl)
 		},
 		onClearSelection() {
 			this.selectedBoy = null;
@@ -82,6 +86,7 @@ export default {
 			this.boys.push(boy);
 			this.girls.push(girl);
 			this.onClearSelection();
+			
 		}
 	},
 }

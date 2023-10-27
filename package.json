@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-	 "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "core-js": "^3.8.3",
@@ -28,7 +28,8 @@
       "node": true
     },
     "extends": [
-      "eslint:recommended", "plugin:vue/vue3-recommended", "prettier"
+		"plugin:vue/vue3-essential",
+		"eslint:recommended"
     ],
     "parserOptions": {
       "parser": "@babel/eslint-parser"
@@ -40,5 +41,17 @@
     "last 2 versions",
     "not dead",
     "not ie 11"
-  ]
+  ],
+  "description": "## Project setup ``` npm install ```",
+  "main": "babel.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KateGalushka/vue-lesson5-dancing.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KateGalushka/vue-lesson5-dancing/issues"
+  },
+  "homepage": "https://github.com/KateGalushka/vue-lesson5-dancing#readme"
 }

@@ -36,16 +36,19 @@ export default {
 			selectedBoy: null,
 			selectedGirl: null,
 			selectedPairs: [],
-			idArr: [],
 		}
 	},
 
 	methods: {
 		onSelectBoy(dancerId) {
-			this.selectedBoy = this.boys.find((boy) => boy.id == dancerId)
+			this.selectedBoy = this.boys.find((boy) => boy.id == dancerId);
+			console.log('this.selectedBoy');
+			console.log(this.selectedBoy);
 		},
 		onSelectGirl(dancerId) {
-			this.selectedGirl = this.girls.find((girl) => girl.id == dancerId)
+			this.selectedGirl = this.girls.find((girl) => girl.id == dancerId);
+			console.log('this.selectedGirl');
+			console.log(this.selectedGirl);
 		},
 		filterBoysList() {
 			return this.boys.filter((boy) => boy.id !== this.selectedBoy.id);
@@ -60,31 +63,27 @@ export default {
 			this.selectedBoy = null;
 			this.selectedGirl = null;
 		},
-		onAddPair() {
-			this.selectedPairs.push(`${this.selectedBoy.name} - ${this.selectedGirl.name}`);
-			this.idArr.push(`${this.selectedBoy.id} : ${this.selectedGirl.id}`);
+		onAddPair(boy,girl) {
+			boy = this.selectedBoy;
+			girl = this.selectedGirl;
+			this.selectedPairs.push({
+				id: new Date().getTime(),
+				boy: boy,
+				girl: girl
+			});
+			// console.log(this.selectedPairs);
 			this.boys = this.filterBoysList();
 			this.girls = this.filterGirlsList();
 			this.onClearSelection();
 		},
-		onDeletePair(index) {
-			let deletedPair;
-			let deletedPairIds;
-			deletedPair = this.selectedPairs.splice(index, 1);
-			console.log(deletedPair);
-			let [a, b] = deletedPair[0].split(' - ');
-			deletedPairIds = this.idArr.splice(index, 1);
-			console.log(deletedPairIds);
-			let [c, d] = deletedPairIds[0].split(' : ');
-			let boy = { name: a, id: c };
-			let girl = { name: b, id: d };
+		onDeletePair(pair) {
+			let {id,boy,girl} = pair;
+			this.selectedPairs = this.selectedPairs.filter((pair)=>pair.id !== id);
 			this.boys.push(boy);
 			this.girls.push(girl);
 			this.onClearSelection();
 		}
 	},
-
-
 }
 </script>
 

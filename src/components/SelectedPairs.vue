@@ -1,10 +1,10 @@
 <template>
 	<div class="pairs">
 		<h3>Обрані пари</h3>
-		<ul v-for="(pair, index) in selectedPairsList" :key="index">
+		<ul v-for="pair in selectedPairsList" :key="pair.id">
 			<li>
-				{{ pair }}
-				<button @click="$emit('deletePair', index)">
+				{{ pair.boy.name }} - {{ pair.girl.name }}
+				<button @click="$emit('deletePair', pair)">
 					Видалити пару
 				</button>
 			</li>

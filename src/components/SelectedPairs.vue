@@ -1,9 +1,9 @@
 <template>
 	<div class="pairs">
 		<h3>Обрані пари</h3>
-		<ul v-for="pair in selectedPairsList" :key="pair.id">
-			<li>
-				{{ pair.boy.name }} - {{ pair.girl.name }}
+		<ul>
+			<li v-for="pair in selectedPairsList" :key="pair.id">
+				<p>{{ pair.boy.name }} - {{ pair.girl.name }}</p>
 				<button @click="$emit('deletePair', pair)">
 					Видалити пару
 				</button>
@@ -25,4 +25,21 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="css" scoped>
+ul{
+	margin: 0;
+	padding: 0;
+}
+.pairs li{
+	display: flex;
+	justify-content: space-between;
+}
+.pairs p{
+	margin: 0;
+	padding: 10px 0;
+}
+.pairs button{
+	padding: 5px 10px;
+	margin-bottom: 5px;
+}
+</style>

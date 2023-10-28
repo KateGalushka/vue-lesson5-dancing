@@ -111,7 +111,7 @@ export default {
 	.pairs {
 		margin: 20px;
 		padding: 0 20px;
-		width: 500px;
+		width: 400px;
 		border: 2px solid darkblue;
 	}
 	.addBtn {
